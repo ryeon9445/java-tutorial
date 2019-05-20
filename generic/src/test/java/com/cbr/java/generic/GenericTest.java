@@ -24,7 +24,44 @@ public class GenericTest {
         }
     }
 
+    @Test
+    public void testExtendGeneric() {
+//        SchoolExtendList<String> extendSchools = new SchoolExtendList<>();  // error
+        SchoolExtendList<School> extendSchools = new SchoolExtendList<>();
+
+        extendSchools.add(new School());
+        extendSchools.add(new MiddleSchool());
+        extendSchools.add(new HighSchool());
+        List<String> names = Arrays.asList("school", "MiddleSchool", "HighSchool");
+        for (int i = 0; i < extendSchools.size(); i++) {
+            Assert.assertEquals(names.get(i), extendSchools.get(i).name());
+        }
+    }
+
+    // normal generic
     class SchoolList<T> {
+
+        ArrayList<T> schools = new ArrayList<>();
+
+        void add(T school) {
+            schools.add(school);
+        }
+
+        T get(int index) {
+            return schools.get(index);
+        }
+
+        boolean remove(T school) {
+            return schools.remove(school);
+        }
+
+        int size() {
+            return schools.size();
+        }
+    }
+
+    // extend generic
+    class SchoolExtendList<T extends School> {
 
         ArrayList<T> schools = new ArrayList<>();
 
