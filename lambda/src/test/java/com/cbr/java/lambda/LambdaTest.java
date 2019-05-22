@@ -10,9 +10,6 @@ import java.util.function.Consumer;
 
 public class LambdaTest {
 
-    private final List<String> friends =
-            Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott");
-
     @Test
     public void testLambda() {
         List<BigDecimal> prices = Arrays.asList(
@@ -32,17 +29,17 @@ public class LambdaTest {
     public void testFlow() {
 
         System.out.println("===== 1 =====");
-        for (int i = 0; i < friends.size(); i++) {
-            System.out.println(friends.get(i));
+        for (int i = 0; i < Data.FRIENDS.size(); i++) {
+            System.out.println(Data.FRIENDS.get(i));
         }
 
         System.out.println("===== 2 =====");
-        for (String friend : friends) {
+        for (String friend : Data.FRIENDS) {
             System.out.println(friend);
         }
 
         System.out.println("===== 3 =====");
-        friends.forEach(new Consumer<String>() {
+        Data.FRIENDS.forEach(new Consumer<String>() {
             @Override
             public void accept(final String name) {
                 System.out.println(name);
@@ -50,21 +47,21 @@ public class LambdaTest {
         });
 
         System.out.println("===== 4 =====");
-        friends.forEach((final String name) -> System.out.println(name));
+        Data.FRIENDS.forEach((final String name) -> System.out.println(name));
 
         System.out.println("===== 5 =====");
-        friends.forEach((name) -> System.out.println(name));
+        Data.FRIENDS.forEach((name) -> System.out.println(name));
 
         System.out.println("===== 6 =====");
-        friends.forEach(name -> System.out.println(name));
+        Data.FRIENDS.forEach(name -> System.out.println(name));
 
         System.out.println("===== 7 =====");
-        friends.forEach(System.out::println);
+        Data.FRIENDS.forEach(System.out::println);
     }
 
     @Test
     public void testMap() {
-        friends.stream()
+        Data.FRIENDS.stream()
                 .map(String::toUpperCase)
                 .forEach(name -> System.out.println(name + " "));
         System.out.println();
@@ -72,7 +69,7 @@ public class LambdaTest {
 
     @Test
     public void testFilter() {
-        long startsWithNCount = friends.stream()
+        long startsWithNCount = Data.FRIENDS.stream()
                 .filter(name -> name.startsWith("N"))
                 .count();
 
