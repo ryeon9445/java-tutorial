@@ -14,6 +14,10 @@ public class DeduplicationTest {
     private final List<String> editors = Arrays.asList("Brian", "Jackie", "John", "Mike");
     private final List<String> comrades = Arrays.asList("Kate", "Ken", "Nick", "Paula", "Zach");
 
+    private Predicate<String> checkIfStartsWith(final String letter) {
+        return name -> name.startsWith(letter);
+    }
+
     @Test
     public void testDuplication() {
         final long countFriendsStartN = friends.stream()
@@ -58,10 +62,6 @@ public class DeduplicationTest {
         final long countFriendsStartB = friends.stream()
                 .filter(checkIfStartsWith("B")).count();
         Assert.assertEquals(1, countFriendsStartB);
-    }
-
-    private Predicate<String> checkIfStartsWith(final String letter) {
-        return name -> name.startsWith(letter);
     }
 
     @Test
