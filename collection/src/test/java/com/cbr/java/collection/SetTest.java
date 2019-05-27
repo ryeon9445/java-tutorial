@@ -25,7 +25,7 @@ public class SetTest {
         customStrings.add(new CustomString("aaa"));
         customStrings.add(new CustomString("aaa"));
 
-        Assert.assertEquals(2, customStrings.size());
+        Assert.assertEquals(1, customStrings.size());
     }
 
     private static class CustomString {
@@ -41,9 +41,14 @@ public class SetTest {
             return name.hashCode();
         }
 
-//        @Override
-//        public boolean equals(Object obj) {
-//            if (obj instanceof )
-//        }
+        @Override
+        public boolean equals(Object obj) {
+            if (obj instanceof CustomString) {
+                CustomString customString = ((CustomString) obj);
+                return name.equals(customString.name);
+            }
+
+            return false;
+        }
     }
 }
