@@ -75,4 +75,20 @@ public class LambdaTest {
 
         Assert.assertEquals(2, startsWithNCount);
     }
+
+    @Test
+    public void testIteratorString() {
+        final String str = "w00t";
+
+        str.chars()
+                .mapToObj(ch -> (char) ch)
+                .forEach(System.out::println);
+
+        System.out.println("");
+
+        str.chars()
+                .filter(Character::isDigit)
+                .mapToObj(ch -> (char) ch)
+                .forEach(System.out::println);
+    }
 }
