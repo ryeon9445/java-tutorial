@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.TreeSet;
 
 public class SetTest {
 
@@ -26,6 +27,24 @@ public class SetTest {
         customStrings.add(new CustomString("aaa"));
 
         Assert.assertEquals(1, customStrings.size());
+    }
+
+    @Test
+    public void testTreeSet() {
+        TreeSet<Integer> integers = new TreeSet<>();
+
+        integers.add(5);
+        integers.add(2);
+        integers.add(3);
+        integers.add(1);
+        integers.add(4);
+
+        Assert.assertEquals(5, integers.size());
+        System.out.println(integers);
+
+        integers.remove(3);
+        Assert.assertEquals(4, integers.size());
+        System.out.println(integers);
     }
 
     private static class CustomString {
