@@ -1,6 +1,6 @@
 package com.cbr.java.lambda;
 
-public class Assert {
+public class Asset {
 
     public enum AssetType {
 
@@ -11,7 +11,7 @@ public class Assert {
     private final AssetType type;
     private final int value;
 
-    public Assert(AssetType type, int value) {
+    public Asset(AssetType type, int value) {
         this.type = type;
         this.value = value;
     }

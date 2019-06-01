@@ -14,4 +14,11 @@ public class Constants {
             new Person("John", 20),
             new Person("Sara", 21),
             new Person("Jane", 21));
+
+    public static final List<Asset> ASSETS = Arrays.asList(
+            new Asset(Asset.AssetType.BOND, 1000),
+            new Asset(Asset.AssetType.BOND, 2000),
+            new Asset(Asset.AssetType.STOCK, 3000),
+            new Asset(Asset.AssetType.STOCK, 4000)
+    );
 }
