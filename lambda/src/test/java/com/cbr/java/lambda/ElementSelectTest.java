@@ -10,14 +10,14 @@ public class ElementSelectTest {
 
     @Test
     public void testOldMethod() {
-        Assert.assertNotNull(oldMethod(Data.FRIENDS, "N"));
-        Assert.assertNull(oldMethod(Data.FRIENDS, "Z"));
+        Assert.assertNotNull(oldMethod(Constants.FRIENDS, "N"));
+        Assert.assertNull(oldMethod(Constants.FRIENDS, "Z"));
     }
 
     @Test
     public void testLambdaMethod() {
-        Assert.assertNotNull(lambdaMethod(Data.FRIENDS, "N"));
-        Assert.assertNull(lambdaMethod(Data.FRIENDS, "Z"));
+        Assert.assertNotNull(lambdaMethod(Constants.FRIENDS, "N"));
+        Assert.assertNull(lambdaMethod(Constants.FRIENDS, "Z"));
     }
 
     private String oldMethod(final List<String> friends, final String startingLetter) {

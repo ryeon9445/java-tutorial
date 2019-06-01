@@ -10,15 +10,15 @@ public class DeduplicationTest {
 
     @Test
     public void testDuplication() {
-        final long countFriendsStartN = Data.FRIENDS.stream()
+        final long countFriendsStartN = Constants.FRIENDS.stream()
                 .filter(name -> name.startsWith("N")).count();
         Assert.assertEquals(2, countFriendsStartN);
 
-        final long countEditorsStartN = Data.EDITORS.stream()
+        final long countEditorsStartN = Constants.EDITORS.stream()
                 .filter(name -> name.startsWith("N")).count();
         Assert.assertEquals(0, countEditorsStartN);
 
-        final long countComradesStartN = Data.COMRADES.stream()
+        final long countComradesStartN = Constants.COMRADES.stream()
                 .filter(name -> name.startsWith("N")).count();
         Assert.assertEquals(1, countComradesStartN);
     }
@@ -27,17 +27,17 @@ public class DeduplicationTest {
     public void testDeduplication01() {
         final Predicate<String> startsWithN = name -> name.startsWith("N");
 
-        final long countFriendsStartN = Data.FRIENDS.stream()
+        final long countFriendsStartN = Constants.FRIENDS.stream()
                 .filter(startsWithN)
                 .count();
         Assert.assertEquals(2, countFriendsStartN);
 
-        final long countEditorsStartN = Data.EDITORS.stream()
+        final long countEditorsStartN = Constants.EDITORS.stream()
                 .filter(startsWithN)
                 .count();
         Assert.assertEquals(0, countEditorsStartN);
 
-        final long countComradesStartN = Data.COMRADES.stream()
+        final long countComradesStartN = Constants.COMRADES.stream()
                 .filter(startsWithN)
                 .count();
         Assert.assertEquals(1, countComradesStartN);
@@ -45,11 +45,11 @@ public class DeduplicationTest {
 
     @Test
     public void testDeduplication02() {
-        final long countFriendsStartN = Data.FRIENDS.stream()
+        final long countFriendsStartN = Constants.FRIENDS.stream()
                 .filter(checkIfStartsWith("N")).count();
         Assert.assertEquals(2, countFriendsStartN);
 
-        final long countFriendsStartB = Data.FRIENDS.stream()
+        final long countFriendsStartB = Constants.FRIENDS.stream()
                 .filter(checkIfStartsWith("B")).count();
         Assert.assertEquals(1, countFriendsStartB);
     }
@@ -59,11 +59,11 @@ public class DeduplicationTest {
         final Function<String, Predicate<String>> startsWithLetter =
                 letter -> name -> name.startsWith(letter);
 
-        final long countFriendsStartN = Data.FRIENDS.stream()
+        final long countFriendsStartN = Constants.FRIENDS.stream()
                 .filter(startsWithLetter.apply("N")).count();
         Assert.assertEquals(2, countFriendsStartN);
 
-        final long countFriendsStartB = Data.FRIENDS.stream()
+        final long countFriendsStartB = Constants.FRIENDS.stream()
                 .filter(startsWithLetter.apply("B")).count();
         Assert.assertEquals(1, countFriendsStartB);
     }

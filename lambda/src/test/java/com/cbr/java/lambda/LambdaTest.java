@@ -29,17 +29,17 @@ public class LambdaTest {
     public void testFlow() {
 
         System.out.println("===== 1 =====");
-        for (int i = 0; i < Data.FRIENDS.size(); i++) {
-            System.out.println(Data.FRIENDS.get(i));
+        for (int i = 0; i < Constants.FRIENDS.size(); i++) {
+            System.out.println(Constants.FRIENDS.get(i));
         }
 
         System.out.println("===== 2 =====");
-        for (String friend : Data.FRIENDS) {
+        for (String friend : Constants.FRIENDS) {
             System.out.println(friend);
         }
 
         System.out.println("===== 3 =====");
-        Data.FRIENDS.forEach(new Consumer<String>() {
+        Constants.FRIENDS.forEach(new Consumer<String>() {
             @Override
             public void accept(final String name) {
                 System.out.println(name);
@@ -47,21 +47,21 @@ public class LambdaTest {
         });
 
         System.out.println("===== 4 =====");
-        Data.FRIENDS.forEach((final String name) -> System.out.println(name));
+        Constants.FRIENDS.forEach((final String name) -> System.out.println(name));
 
         System.out.println("===== 5 =====");
-        Data.FRIENDS.forEach((name) -> System.out.println(name));
+        Constants.FRIENDS.forEach((name) -> System.out.println(name));
 
         System.out.println("===== 6 =====");
-        Data.FRIENDS.forEach(name -> System.out.println(name));
+        Constants.FRIENDS.forEach(name -> System.out.println(name));
 
         System.out.println("===== 7 =====");
-        Data.FRIENDS.forEach(System.out::println);
+        Constants.FRIENDS.forEach(System.out::println);
     }
 
     @Test
     public void testMap() {
-        Data.FRIENDS.stream()
+        Constants.FRIENDS.stream()
                 .map(String::toUpperCase)
                 .forEach(name -> System.out.println(name + " "));
         System.out.println();
@@ -69,7 +69,7 @@ public class LambdaTest {
 
     @Test
     public void testFilter() {
-        long startsWithNCount = Data.FRIENDS.stream()
+        long startsWithNCount = Constants.FRIENDS.stream()
                 .filter(name -> name.startsWith("N"))
                 .count();
 

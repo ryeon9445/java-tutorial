@@ -12,58 +12,58 @@ public class CompareTest {
 
     @Test
     public void testCompare01() {
-        List<Data.Person> ascendingAge = Data.PEOPLE.stream()
-                .sorted(Data.Person::ageDifference)
+        List<Person> ascendingAge = Constants.PEOPLE.stream()
+                .sorted(Person::ageDifference)
                 .collect(Collectors.toList());
 
-        Assert.assertEquals(20, ascendingAge.stream().findFirst().orElseGet(Data.Person::new).getAge());
+        Assert.assertEquals(20, ascendingAge.stream().findFirst().orElseGet(Person::new).getAge());
         System.out.println(ascendingAge);
     }
 
     @Test
     public void testCompare02() {
-        Comparator<Data.Person> ascendingAgeComparator = Data.Person::ageDifference;
-        Comparator<Data.Person> descendingAgeComparator = ascendingAgeComparator.reversed();
-        List<Data.Person> descendingAge = Data.PEOPLE.stream()
+        Comparator<Person> ascendingAgeComparator = Person::ageDifference;
+        Comparator<Person> descendingAgeComparator = ascendingAgeComparator.reversed();
+        List<Person> descendingAge = Constants.PEOPLE.stream()
                 .sorted(descendingAgeComparator)
                 .collect(Collectors.toList());
 
-        Assert.assertEquals(35, descendingAge.stream().findFirst().orElseGet(Data.Person::new).getAge());
+        Assert.assertEquals(35, descendingAge.stream().findFirst().orElseGet(Person::new).getAge());
         System.out.println(descendingAge);
     }
 
     @Test
     public void testCompare03() {
-        Data.PEOPLE.stream()
-                .min(Data.Person::ageDifference)
+        Constants.PEOPLE.stream()
+                .min(Person::ageDifference)
                 .ifPresent(youngest -> Assert.assertEquals(20, youngest.getAge()));
 
-        Data.PEOPLE.stream()
-                .max(Data.Person::ageDifference)
+        Constants.PEOPLE.stream()
+                .max(Person::ageDifference)
                 .ifPresent(eldest -> Assert.assertEquals(35, eldest.getAge()));
     }
 
     @Test
     public void testCompare04() {
-        List<Data.Person> ascendingName = Data.PEOPLE.stream()
-                .sorted(Comparator.comparing(Data.Person::getName))
+        List<Person> ascendingName = Constants.PEOPLE.stream()
+                .sorted(Comparator.comparing(Person::getName))
                 .collect(Collectors.toList());
 
-        Assert.assertEquals("Greg", ascendingName.stream().findFirst().orElseGet(Data.Person::new).getName());
+        Assert.assertEquals("Greg", ascendingName.stream().findFirst().orElseGet(Person::new).getName());
 
-        ascendingName = Data.PEOPLE.stream()
-                .sorted(Comparator.comparing(Data.Person::getName).reversed())
+        ascendingName = Constants.PEOPLE.stream()
+                .sorted(Comparator.comparing(Person::getName).reversed())
                 .collect(Collectors.toList());
 
-        Assert.assertEquals("Sara", ascendingName.stream().findFirst().orElseGet(Data.Person::new).getName());
+        Assert.assertEquals("Sara", ascendingName.stream().findFirst().orElseGet(Person::new).getName());
     }
 
     @Test
     public void testCompare05() {
-        final Function<Data.Person, Integer> byAge = Data.Person::getAge;
-        final Function<Data.Person, String> byTheirName = Data.Person::getName;
+        final Function<Person, Integer> byAge = Person::getAge;
+        final Function<Person, String> byTheirName = Person::getName;
 
-        List<Data.Person> sortedPersons = Data.PEOPLE.stream()
+        List<Person> sortedPersons = Constants.PEOPLE.stream()
                 .sorted(Comparator.comparing(byAge).thenComparing(byTheirName))
                 .collect(Collectors.toList());
 
