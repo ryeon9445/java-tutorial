@@ -21,4 +21,7 @@ public class Constants {
             new Asset(Asset.AssetType.STOCK, 3000),
             new Asset(Asset.AssetType.STOCK, 4000)
     );
+
+    public static final List<String> NAMES = Arrays.asList(
+            "Brad", "Kate", "Kim", "Jack", "Joe", "Mike", "Susan", "George", "Robert", "Julia", "Parker", "Benson");
 }
