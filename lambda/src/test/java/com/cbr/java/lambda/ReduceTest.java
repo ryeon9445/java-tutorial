@@ -3,6 +3,7 @@ package com.cbr.java.lambda;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 public class ReduceTest {
@@ -34,5 +35,20 @@ public class ReduceTest {
                         friend1.length() >= friend2.length() ? friend1 : friend2);
 
         Assert.assertEquals("Steve", steveOrLonger);
+    }
+
+    private class StockInfo {
+
+        public final String ticker;
+        public final BigDecimal price;
+
+        public StockInfo(String ticker, BigDecimal price) {
+            this.ticker = ticker;
+            this.price = price;
+        }
+
+        public String toString() {
+            return String.format("ticker: %s price: %g", ticker, price);
+        }
     }
 }
