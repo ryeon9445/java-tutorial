@@ -1,9 +1,6 @@
 package com.cbr.java.algorithm;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class MyArrayList<T> implements List<T> {
 
@@ -42,107 +39,160 @@ public class MyArrayList<T> implements List<T> {
     }
 
     @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }
-
-    @Override
-    public boolean contains(Object o) {
-        return false;
-    }
-
-    @Override
-    public Iterator<T> iterator() {
-        return null;
-    }
-
-    @Override
-    public Object[] toArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public <T1> T1[] toArray(T1[] a) {
-        return null;
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        return false;
-    }
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
     public boolean addAll(Collection<? extends T> c) {
-        return false;
+        boolean flag = true;
+        for (T element: c) {
+            flag &= add(element);
+        }
+        return flag;
     }
 
     @Override
     public boolean addAll(int index, Collection<? extends T> c) {
-        return false;
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void clear() {
+        size = 0;
+    }
 
+    @Override
+    public boolean contains(Object o) {
+        return indexOf(o) != -1;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        for (Object element : c) {
+            if (!contains(element)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public T get(int index) {
-        return null;
-    }
-
-    @Override
-    public T set(int index, T element) {
-        return null;
-    }
-
-    @Override
-    public T remove(int index) {
-        return null;
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
+        return array[index];
     }
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        for (int i = 0; i < size; i++) {
+            if (equals(o, array[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        T[] copy = Arrays.copyOf(array, size);
+        return Arrays.asList(copy).iterator();
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        for (int i = size - 1; i>=0; i--) {
+            if (equals(o, array[i])) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
     public ListIterator<T> listIterator() {
-        return null;
+        T[] copy = Arrays.copyOf(array, size);
+        return Arrays.asList(copy).listIterator();
     }
 
     @Override
     public ListIterator<T> listIterator(int index) {
-        return null;
+        T[] copy = Arrays.copyOf(array, size);
+        return Arrays.asList(copy).listIterator(index);
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        int index = indexOf(o);
+        if (index == -1) {
+            return false;
+        }
+        remove(index);
+        return true;
+    }
+
+    @Override
+    public T remove(int index) {
+        T element = get(index);
+        for (int i = index; i < size-1; i++) {
+            array[i] = array[i+1];
+        }
+        size--;
+        return element;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        boolean flag = true;
+        for (Object obj : c) {
+            flag &= remove(obj);
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public T set(int index, T element) {
+        T old = get(index);
+        array[index] = element;
+        return old;
+    }
+
+    @Override
+    public int size() {
+        return size;
     }
 
     @Override
     public List<T> subList(int fromIndex, int toIndex) {
-        return null;
+        if (fromIndex < 0 || toIndex >= size || fromIndex > toIndex) {
+            throw new IndexOutOfBoundsException();
+        }
+        T[] copy = Arrays.copyOfRange(array, fromIndex, toIndex);
+        return Arrays.asList(copy);
+    }
+
+    @Override
+    public Object[] toArray() {
+        return Arrays.copyOf(array, size);
+    }
+
+    @Override
+    public <T1> T1[] toArray(T1[] a) {
+        throw new UnsupportedOperationException();
+    }
+
+    private boolean equals(Object target, Object element) {
+        if (target == null) {
+            return element == null;
+        } else {
+            return target.equals(element);
+        }
     }
 }
