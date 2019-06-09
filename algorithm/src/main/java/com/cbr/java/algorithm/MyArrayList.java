@@ -72,6 +72,9 @@ public class MyArrayList<T> implements List<T> {
         return true;
     }
 
+    /**
+     * O(1)
+     */
     @Override
     public T get(int index) {
         if (index < 0 || index >= size) {
@@ -80,6 +83,9 @@ public class MyArrayList<T> implements List<T> {
         return array[index];
     }
 
+    /**
+     * O(n)
+     */
     @Override
     public int indexOf(Object o) {
         for (int i = 0; i < size; i++) {
@@ -157,6 +163,9 @@ public class MyArrayList<T> implements List<T> {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * O(1)
+     */
     @Override
     public T set(int index, T element) {
         T old = get(index);
