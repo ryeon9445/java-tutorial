@@ -129,6 +129,9 @@ public class MyArrayList<T> implements List<T> {
         return Arrays.asList(copy).listIterator(index);
     }
 
+    /**
+     * O(n)
+     */
     @Override
     public boolean remove(Object o) {
         int index = indexOf(o);
