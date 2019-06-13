@@ -1,9 +1,6 @@
 package com.cbr.java.algorithm;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 //public class MyLinkedList<E> implements List<E> {
 //
@@ -140,5 +137,29 @@ import java.util.List;
 //    public Iterator<E> iterator() {
 //        E[] array = (E[]) toArray();
 //        return Arrays.asList(array).iterator();
+//    }
+//
+//
+//    @Override
+//    public int lastIndexOf(Object o) {
+//        Node node = head;
+//        int index = -1;
+//        for (int i = 0; i < size; i++) {
+//            if (equals(o, node.cargo)) {
+//                index = i;
+//            }
+//            node = node.next;
+//        }
+//        return index;
+//    }
+//
+//    @Override
+//    public ListIterator<E> listIterator() {
+//        return null;
+//    }
+//
+//    @Override
+//    public ListIterator<E> listIterator(int index) {
+//        return null;
 //    }
 //}
