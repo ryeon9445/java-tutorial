@@ -14,8 +14,8 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class MyArrayListTest {
 
-    private List<Integer> myList;
-    private List<Integer> list;
+    protected List<Integer> myList;
+    protected List<Integer> list;
 
     @Before
     public void setUp(){
