@@ -12,6 +12,7 @@ public class WikiNodeIterable implements Iterable<Node> {
         this.root = root;
     }
 
+    @Override
     public Iterator<Node> iterator() {
         return new WikiNodeIterator(root);
     }
