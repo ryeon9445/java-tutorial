@@ -34,9 +34,9 @@ public class WikiFetcher {
         String filename = "resources" + slash + realURL.getHost() + realURL.getPath();
 
         InputStream stream = WikiFetcher.class.getClassLoader().getResourceAsStream(filename);
-        Document document = Jsoup.parse(stream, "UTF-8", filename);
+        Document doc = Jsoup.parse(stream, "UTF-8", filename);
 
-        Element content = document.getElementById("mw-content-text");
+        Element content = doc.getElementById("mw-content-text");
         Elements paras = content.select("p");
         return paras;
     }
