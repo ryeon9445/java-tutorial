@@ -43,6 +43,9 @@ public class MyLinearMap<K, V> implements Map<K, V> {
         return findEntry(target) != null;
     }
 
+    /**
+     * O(n)
+     */
     private Entry findEntry(Object target) {
         for (Entry entry: entries) {
             if (equals(target, entry.getKey())) {
@@ -52,6 +55,9 @@ public class MyLinearMap<K, V> implements Map<K, V> {
         return null;
     }
 
+    /**
+     * O(1)
+     */
     private boolean equals(Object target, Object obj) {
         if (target == null) {
             return obj == null;
@@ -74,6 +80,9 @@ public class MyLinearMap<K, V> implements Map<K, V> {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * O(n)
+     */
     @Override
     public V get(Object key) {
         Entry entry = findEntry(key);
@@ -97,6 +106,9 @@ public class MyLinearMap<K, V> implements Map<K, V> {
         return set;
     }
 
+    /**
+     * O(n)
+     */
     @Override
     public V put(K key, V value) {
         Entry entry = findEntry(key);
